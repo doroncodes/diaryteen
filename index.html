@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diary of a Teen</title>
+    <style>
+          :root {
+            --lavender: rgba(200, 180, 255, 0.5);
+            --sky-blue: rgba(180, 220, 255, 0.5);
+            --soft-peach: rgba(255, 200, 180, 0.5);
+            --highlight-yellow: rgba(255, 255, 180, 0.5);
+            --dark-bg: #121212;
+            --dark-text: #f0f0f0;
+            --dark-secondary: #aaaaaa;
+            --file-blue: #3b82f6;
+            --file-blue-dark: #1d4ed8;
+            --light-gray-bg: #f5f5f5;
+            --polaroid-border: 15px;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.5s ease, color 0.5s ease;
+            position: relative;
+            overflow-x: hidden;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.5s ease, color 0.5s ease;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        .mono {
+            font-family: 'Space Mono', monospace;
+        }
+        
+        .highlight-lavender {
+            background: linear-gradient(180deg, transparent 65%, var(--lavender) 65%);
+            display: inline;
+        }
+        
+        .highlight-blue {
+            background: linear-gradient(180deg, transparent 65%, var(--sky-blue) 65%);
+            display: inline;
+        }
+        
+        .highlight-peach {
+            background: linear-gradient(180deg, transparent 65%, var(highlight-yellow) 65%);
+            display: inline;
+        }
+        
+        .highlight-yellow {
+            background: linear-gradient(180deg, transparent 65%, var(--highlight-yellow) 65%);
+            display: inline;
+        }
+        
+        .dark-mode {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+        }
+        
+        .dark-mode .card {
+            background-color: #1e1e1e;
+            border-color: #333;
+        }
+        
+        .dark-mode .receipt {
+            background-color: #1e1e1e;
+            color: white;
+        }
+        
+        .dark-mode .receipt-item {
+            border-color: #444;
+        }
+        
+        .dark-mode .quote-box {
+            background-color: #1e1e1e;
+            border-color: #333;
+        }
+        
+        .dark-mode .news-board {
+            background-color: #1e1e1e;
+        }
+        
+        .dark-mode .file-tab {
+            background-color: #2a2a2a;
+            border-color: #333;
+            color: #ddd;
+        }
+        
+        .dark-mode .file-tab.active {
+            background-color: var(--file-blue-dark);
+            border-color: var(--file-blue);
+            color: white;
+        }
+        
+        .dark-mode .file-content {
+            background-color: #1e1e1e;
+            border-color: var(--file-blue-dark);
+            color: white;
+        }
+        
+        .dark-mode .file-content-pane .hover\:bg-gray-50:hover {
+            background-color: #2a2a2a;
+        }
+        
+        .dark-mode .text-message {
+            background-color: #056162;
+        }
+        
+        .dark-mode .text-message::after {
+            border-left-color: #056162;
+        }
+        
+        .dark-mode .text-gray-500 {
+            color: var(--dark-secondary);
+        }
+        
+        .dark-mode .text-gray-600 {
+            color: var(--dark-secondary);
+        }
+        
+        .dark-mode .bg-gray-50 {
+            background-color: #1a1a1a;
+        }
+        
+        .dark-mode .bg-white {
+            background-color: #1e1e1e;
+        }
+        
+        .dark-mode .border-gray-200 {
+            border-color: #333;
+        }
+        
+        .dark-mode .song-item {
+            border-color: #333;
+        }
+        
+        .dark-mode .song-artist {
+            color: var(--dark-secondary);
+        }
+        
+        .dark-mode .song-item:hover {
+            background-color: #2a2a2a;
+        }
+        
+        .dark-mode .sticky-note {
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        }
+        
+        .dark-mode .sticky-note p.text-gray-600 {
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .dark-mode .bg-gray-100 {
+            background-color: #2a2a2a;
+            color: var(--dark-text);
+        }
+        
+        .dark-mode .recent-blog-content {
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0) 100%);
+        }
+        
+        .dark-mode .dark-mode-label {
+            color: var(--dark-text);
+        }
+        
+        .dark-mode .social-icon {
+            color: var(--dark-text);
+            border-color: #333;
+        }
+        
+        .dark-mode .social-icon:hover {
+            background-color: #333;
+        }
+        
+        .dark-mode .hamburger-line {
+            background-color: var(--dark-text);
+        }
+        
+        .dark-mode .mobile-menu {
+            background-color: #1a1a1a;
+            border-color: #333;
+        }
+        
+        .dark-mode .mobile-menu a {
+            border-color: #333;
+        }
+        
+        .dark-mode .gym-day {
+            background-color: #2a2a2a;
+            border-color: #333;
+        }
+        
+        .dark-mode .gym-day.gym-went::after {
+            color: #ff6b6b;
+        }
+        
+        .dark-mode .torah-section {
+            background-color: #1e1e1e;
+            border-color: #333;
+        }
+        
+        .dark-mode .buy-coffee-btn {
+            background-color: #2a2a2a;
+            color: var(--dark-text);
+            border-color: #444;
+        }
+        
+        .dark-mode .buy-coffee-btn:hover {
+            background-color: #333;
+        }
+        
+        .dark-mode .light-gray-bg {
+            background-color: #1e1e1e;
+        }
+        
+        .dark-mode .recent-posts-bg {
+            background-color: #1e1e1e;
+        }
+        
+        .dark-mode .gym-tracker-container {
+            background-color: #1e1e1e;
+        }
+        
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .credit-card {
+            perspective: 1000px;
+            width: 300px;
+            height: 180px;
+            margin: 0 auto 30px;
+        }
+        
+        .credit-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+        
+        .credit-card:hover .credit-card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .credit-card-front, .credit-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            padding: 20px;
+        }
+        
+        .credit-card-front {
+            background: linear-gradient(135deg, #a78bfa, #60a5fa);
+            color: white;
+        }
+        
+        .credit-card-back {
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            color: white;
+            transform: rotateY(180deg);
+        }
+        
+        .chip {
+            width: 40px;
+            height: 30px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .receipt {
+            background-color: #f9f9f9;
+            font-family: 'Space Mono', monospace;
+            position: relative;
+        }
+        
+        .receipt::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 15px;
+            background: linear-gradient(135deg, transparent 33.33%, #f9f9f9 33.33%, #f9f9f9 66.66%, transparent 66.66%);
+            background-size: 20px 15px;
+            background-repeat: repeat-x;
+        }
+        
+        .dark-mode .receipt::after {
+            background: linear-gradient(135deg, transparent 33.33%, #1e1e1e 33.33%, #1e1e1e 66.66%, transparent 66.66%);
+            background-size: 20px 15px;
+        }
+        
+        .receipt-item {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dotted #ccc;
+            padding: 8px 0;
+        }
+        
+        .news-board {
+            background-color: white;
+            border-radius: 0.5rem;
+            border: 1px solid #e5e7eb;
+            overflow: hidden;
+        }
+        
+        .dark-mode .news-board {
+            background-color: #1e1e1e;
+            border-color: #333;
+        }
+        
+        .news-item {
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+            transition: background-color 0.3s ease;
+        }
+        
+        .dark-mode .news-item {
+            border-color: #333;
+        }
+        
+        .news-item:last-child {
+            border-bottom: none;
+        }
+        
+        .news-item:hover {
+            background-color: #f9fafb;
+        }
+        
+        .dark-mode .news-item:hover {
+            background-color: #2a2a2a;
+        }
+        
+        .sticky-note {
+            transform: rotate(var(--rotation));
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .toggle-container {
+            width: 60px;
+            height: 30px;
+            border-radius: 15px;
+            background-color: #f0f0f0;
+            position: relative;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .toggle-circle {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: white;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFD700;
+        }
+        
+        .toggle-active {
+            background-color: #333;
+        }
+        
+        .toggle-active .toggle-circle {
+            transform: translateX(30px);
+            background-color: #333;
+            color: white;
+        }
+        
+        .file-tab {
+            border-radius: 10px 10px 0 0;
+            border-bottom: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-color: #e0e9f7;
+            border-color: var(--file-blue);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .file-tab.active {
+            background-color: var(--file-blue);
+            color: white;
+            border-color: var(--file-blue-dark);
+            z-index: 10;
+        }
+        
+        .file-content {
+            border-radius: 0 10px 10px 10px;
+            margin-top: -1px;
+            z-index: 5;
+            background-color: white;
+            border: 2px solid var(--file-blue);
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .file-content::before {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            height: 1px;
+            background-color: rgba(0,0,0,0.1);
+        }
+        
+        .file-content-pane {
+            display: none;
+        }
+        
+        .file-content-pane.active {
+            display: block;
+        }
+        
+        .text-message {
+            position: relative;
+            background-color: #DCF8C6;
+            border-radius: 10px;
+            padding: 10px 15px;
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: 20px;
+        }
+        
+        .text-message::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: -10px;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 10px solid #DCF8C6;
+        }
+        
+        .barcode {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .barcode-line {
+            height: 100%;
+            display: inline-block;
+            margin-right: 1px;
+            background-color: #000;
+        }
+        
+        .dark-mode .barcode-line {
+            background-color: #fff;
+        }
+        
+        .song-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.3s ease;
+        }
+        
+        .song-item:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .song-number {
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 18px;
+            color: #888;
+            width: 25px;
+        }
+        
+        .song-cover {
+            width: 50px;
+            height: 50px;
+            background-color: #ddd;
+            margin-right: 15px;
+            border-radius: 5px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .song-info {
+            flex-grow: 1;
+        }
+        
+        .song-title {
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+        
+        .song-artist {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .recent-blog {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            background-color: white;
+            border: 2px solid #000;
+        }
+        
+        .dark-mode .recent-blog {
+            background-color: #1e1e1e;
+            border-color: #555;
+        }
+        
+        .recent-blog-image {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .recent-blog-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid #e5e5e5;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: #f5f5f5;
+            transform: translateY(-3px);
+        }
+        
+        .polaroid {
+            background: white;
+            padding: var(--polaroid-border);
+            padding-bottom: calc(var(--polaroid-border) + 20px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transform: rotate(var(--rotation, 0deg));
+            transition: all 0.3s ease;
+        }
+        
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        
+        .polaroid-img {
+            display: block;
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        
+        .polaroid-caption {
+            text-align: center;
+            font-family: 'Space Mono', monospace;
+            font-size: 14px;
+        }
+        
+        .dark-mode .polaroid {
+            background: #2a2a2a;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        
+        .dark-mode-label {
+            margin-right: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .doodle {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.7;
+            z-index: -1;
+        }
+        
+        .doodle-star {
+            top: 45%;
+            right: 25%;
+            transform: rotate(15deg);
+        }
+        
+        .doodle-heart {
+            bottom: 25%;
+            left: 5%;
+            transform: rotate(-10deg);
+        }
+        
+        .doodle-cloud {
+            top: 40%;
+            right: 8%;
+        }
+        
+        .dark-mode .doodle path,
+        .dark-mode .doodle circle,
+        .dark-mode .doodle line {
+            stroke: rgba(255,255,255,0.2);
+        }
+        
+        .gym-tracker {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .gym-day-header {
+            text-align: center;
+            font-weight: bold;
+            font-size: 14px;
+            padding-bottom: 5px;
+        }
+        
+        .gym-day-date {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .dark-mode .gym-day-date {
+            color: #aaa;
+        }
+        
+        .gym-day-cell {
+            aspect-ratio: 1;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            border: 1px solid #e0e0e0;
+            position: relative;
+        }
+        
+        .dark-mode .gym-day-cell {
+            background-color: #2a2a2a;
+            border-color: #444;
+        }
+        
+        .gym-day-cell.gym-went::after {
+            content: "✕";
+            font-size: 36px;
+            color: #ff0000;
+            font-weight: bold;
+        }
+        
+        .paper-clip {
+            position: absolute;
+            width: 30px;
+            height: 60px;
+            top: -20px;
+            right: 20px;
+            z-index: 10;
+        }
+        
+        .paper-clip::before {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 35px;
+            background: #a0a0a0;
+            border-radius: 5px 5px 0 0;
+            top: 0;
+            left: 0;
+        }
+        
+        .paper-clip::after {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 25px;
+            background: #a0a0a0;
+            border-radius: 0 0 5px 5px;
+            bottom: 0;
+            right: 0;
+        }
+        
+        .tape {
+            position: absolute;
+            width: 80px;
+            height: 20px;
+            background-color: rgba(255, 255, 255, 0.6);
+            transform: rotate(var(--rotation, -5deg));
+            top: var(--top, -10px);
+            left: var(--left, 20px);
+            z-index: 10;
+            opacity: 0.7;
+        }
+        
+        .dark-mode .tape {
+            background-color: rgba(80, 80, 80, 0.6);
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 20px;
+            cursor: pointer;
+            z-index: 100;
+        }
+        
+        .hamburger-line {
+            width: 100%;
+            height: 2px;
+            background-color: #333;
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger.active .hamburger-line:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+        
+        .hamburger.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active .hamburger-line:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+        
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 70%;
+            max-width: 300px;
+            height: 100vh;
+            background-color: white;
+            z-index: 99;
+            padding: 80px 20px 20px;
+            transition: right 0.3s ease;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            border-left: 1px solid #e5e5e5;
+        }
+        
+        .mobile-menu.active {
+            right: 0;
+        }
+        
+        .mobile-menu a {
+            display: block;
+            padding: 15px 0;
+            border-bottom: 1px solid #e5e5e5;
+            font-size: 18px;
+        }
+        
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 98;
+        }
+        
+        .mobile-menu-overlay.active {
+            display: block;
+        }
+        
+        .torah-section {
+            background-color: var(--light-gray-bg);
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .buy-coffee-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #FFDD00;
+            color: #000;
+            padding: 8px 16px;
+            border-radius: 24px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #FFDD00;
+        }
+        
+        .buy-coffee-btn:hover {
+            background-color: #FFE44D;
+            transform: translateY(-2px);
+        }
+        
+        .buy-coffee-btn svg {
+            margin-right: 8px;
+        }
+        
+        .read-more-btn {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 0;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .read-more-btn:hover {
+            background-color: #333;
+            transform: translateY(-2px);
+        }
+        
+        .dark-mode .read-more-btn {
+            background-color: #fff;
+            color: #000;
+        }
+        
+        .dark-mode .read-more-btn:hover {
+            background-color: #ddd;
+        }
+        
+        .light-gray-bg {
+            background-color: var(--light-gray-bg);
+        }
+        
+        .recent-posts-bg {
+            background-color: var(--light-gray-bg);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .stacked-papers {
+            position: relative;
+        }
+        
+        .stacked-papers::before, 
+        .stacked-papers::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            background-color: white;
+            z-index: -1;
+        }
+        
+        .stacked-papers::before {
+            top: 5px;
+            right: -5px;
+            transform: rotate(2deg);
+            border: 2px solid #e0e0e0;
+        }
+        
+        .stacked-papers::after {
+            top: 10px;
+            right: -10px;
+            transform: rotate(4deg);
+            border: 2px solid #e0e0e0;
+        }
+        
+        .dark-mode .stacked-papers::before,
+        .dark-mode .stacked-papers::after {
+            background-color: #1a1a1a;
+            border-color: #333;
+        }
+        
+        .gym-tracker-container {
+            background-color: var(--light-gray-bg);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .desktop-menu {
+                display: none;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#">Home</a>
+        <a href="#">Archive</a>
+        <a href="#">About</a>
+        <div class="flex items-center mt-4 mb-2">
+            <span class="dark-mode-label">Dark Mode</span>
+            <div id="mobileDarkModeToggle" class="toggle-container ml-auto">
+                <div class="toggle-circle">☀️</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="container mx-auto px-4 py-6 flex justify-between items-center">
+        <div class="mono text-xl font-bold">diary of a <span class="highlight-yellow">teen</span></div>
+        <div class="desktop-menu flex items-center space-x-6">
+            <a href="#" class="hover:underline">Home</a>
+            <a href="#" class="hover:underline">Archive</a>
+            <a href="#" class="hover:underline">About</a>
+            <div class="flex items-center">
+                <span class="dark-mode-label">Dark Mode</span>
+                <div id="darkModeToggle" class="toggle-container">
+                    <div class="toggle-circle">☀️</div>
+                </div>
+            </div>
+        </div>
+        <div class="hamburger" id="hamburgerMenu">
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="container mx-auto px-4 py-16 md:py-24">
+        <h1 class="mono text-4xl md:text-6xl font-bold mb-4">diary of a <span class="highlight-yellow">teen</span></h1>
+        <p class="text-lg md:text-xl text-gray-600 mb-6">Unfiltered thoughts. Weekly stories.</p>
+        <p class="text-lg md:text-xl mb-8">Inside the mind <span class="highlight-lavender">of a modern day teen</span>. Every week. <span class="highlight-blue">Raw</span> and <span class="highlight-peach">real</span>.</p>
+    </header>
+
+    <main class="container mx-auto px-4">
+        <!-- Featured Blog Post - With clearer border -->
+        <section class="mb-16 relative">
+            <!-- Decorative tape -->
+            <div class="tape" style="--rotation: -5deg; --top: -10px; --left: 30px;"></div>
+            
+            <h2 class="mono text-2xl font-bold mb-8">Latest Entry</h2>
+            <div class="recent-blog shadow-lg">
+                <div class="recent-blog-content">
+                    <div class="text-sm mb-2 text-gray-500">June 15, 2025</div>
+                    <h3 class="text-2xl font-bold mb-4">Finding My Voice</h3>
+                    <p class="mb-6 text-gray-600 text-center">Sometimes I wonder if my thoughts are really mine or just echoes of what I've consumed online. Today I decided to disconnect for a while...</p>
+                    <a href="#" class="read-more-btn">Read Full Entry</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Recent Blog Posts - With light gray background -->
+        <section class="mb-16 relative">
+            <!-- Paper clip decoration -->
+            <div class="paper-clip"></div>
+            
+            <h2 class="mono text-2xl font-bold mb-8">Recent Posts</h2>
+            <div class="recent-posts-bg">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Blog Post 1 -->
+                    <div class="card border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-all bg-white">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-semibold">Finding My Voice</h3>
+                            <div class="text-sm text-gray-500">May 15</div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Sometimes I wonder if my thoughts are really mine or just echoes of what I've consumed online. Today I decided to <span class="highlight-lavender">disconnect</span> for a while...</p>
+                        <div class="flex space-x-2 mb-4">
+                            <span class="text-sm bg-gray-100 px-3 py-1 rounded-full">reflection</span>
+                            <span class="text-sm bg-gray-100 px-3 py-1 rounded-full">growth</span>
+                        </div>
+                        <a href="#" class="text-blue-500 hover:underline text-sm font-medium">Read more →</a>
+                    </div>
+                    
+                    <!-- Blog Post 2 -->
+                    <div class="card border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-all bg-white">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-semibold">Late Night Thoughts</h3>
+                            <div class="text-sm text-gray-500">May 8</div>
+                        </div>
+                        <p class="text-gray-600 mb-4">It's 2AM and I'm thinking about how we're all just <span class="highlight-blue">stardust</span> trying to make sense of our existence. The night sky always makes me feel small yet...</p>
+                        <div class="flex space-x-2 mb-4">
+                            <span class="text-sm bg-gray-100 px-3 py-1 rounded-full">night</span>
+                            <span class="text-sm bg-gray-100 px-3 py-1 rounded-full">philosophy</span>
+                        </div>
+                        <a href="#" class="text-blue-500 hover:underline text-sm font-medium">Read more →</a>
+                    </div>
+                    
+                    <!-- Blog Post 3 -->
+                    <div class="card border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-all bg-white">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-semibold">The Playlist of My Life</h3>
+                            <div class="text-sm text-gray-500">May 1</div>
+                        </div>
+                        <p class="text-gray-600 mb-4">If my life had a soundtrack, it would be a mix of indie rock and lo-fi beats. Music has this way of <span class="highlight-peach">healing</span> parts of me I didn't know were broken...</p>
+                        <div class="flex space-x-2 mb-4">
+                            <span class="text-sm bg-gray-100 px-3 py-1 rounded-full">music</span>
+                            <span class="text-sm bg-gray-100 px-3 py-1 rounded-full">emotions</span>
+                        </div>
+                        <a href="#" class="text-blue-500 hover:underline text-sm font-medium">Read more →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Archive Section - With stacked paper look -->
+        <section class="mb-16 relative">
+            <!-- Decorative tape -->
+            <div class="tape" style="--rotation: 5deg; --top: -5px; --left: 60%;"></div>
+            
+            <h2 class="mono text-2xl font-bold mb-8">Archive</h2>
+            <div class="relative stacked-papers">
+                <div class="flex border-b-0">
+                    <div class="file-tab active px-6 py-3 -mb-px" data-tab="may">May</div>
+                    <div class="file-tab px-6 py-3 -mb-px ml-2" data-tab="april">April</div>
+                    <div class="file-tab px-6 py-3 -mb-px ml-2" data-tab="march">March</div>
+                    <div class="file-tab px-6 py-3 -mb-px ml-2" data-tab="february">February</div>
+                </div>
+                <div class="file-content p-6">
+                    <!-- May Content -->
+                    <div class="file-content-pane active" id="may-content">
+                        <div class="grid grid-cols-1 gap-4">
+                            <div class="flex justify-between items-center p-3 hover:bg-gray-50 rounded">
+                                <div>
+                                    <h3 class="font-medium">Finding My Voice</h3>
+                                    <p class="text-sm text-gray-500">Sometimes I wonder if my thoughts are really mine...</p>
+                                </div>
+                                <div class="text-sm text-gray-500">May 15</div>
+                            </div>
+                            <div class="flex justify-between items-center p-3 hover:bg-gray-50 rounded">
+                                <div>
+                                    <h3 class="font-medium">Late Night Thoughts</h3>
+                                    <p class="text-sm text-gray-500">It's 2AM and I'm thinking about how we're all just stardust...</p>
+                                </div>
+                                <div class="text-sm text-gray-500">May 8</div>
+                            </div>
+                            <div class="flex justify-between items-center p-3 hover:bg-gray-50 rounded">
+                                <div>
+                                    <h3 class="font-medium">The Playlist of My Life</h3>
+                                    <p class="text-sm text-gray-500">If my life had a soundtrack, it would be a mix of indie rock...</p>
+                                </div>
+                                <div class="text-sm text-gray-500">May 1</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- April Content -->
+                    <div class="file-content-pane" id="april-content">
+                        <div class="grid grid-cols-1 gap-4">
+                            <div class="flex justify-between items-center p-3 hover:bg-gray-50 rounded">
+                                <div>
+                                    <h3 class="font-medium">Spring Awakening</h3>
+                                    <p class="text-sm text-gray-500">The world is coming alive again, and so am I...</p>
+                                </div>
+                                <div class="text-sm text-gray-500">April 24</div>
+                            </div>
+                            <div class="flex justify-between items-center p-3 hover:bg-gray-50 rounded">
+                                <div>
+                                    <h3 class="font-medium">Identity Crisis #247</h3>
+                                    <p class="text-sm text-gray-500">Who am I when no one's watching? A question I ask myself...</p>
+                                </div>
+                                <div class="text-sm text-gray-500">April 17</div>
+                            </div>
+                            <div class="flex justify-between items-center p-3 hover:bg-gray-50 rounded">
+                                <div>
+                                    <h3 class="font-medium">Digital Detox Attempt</h3>
+                                    <p class="text-sm text-gray-500">I tried to stay off social media for a week. Here's what happened...</p>
+                                </div>
+                                <div class="text-sm text-gray-500">April 10</div>
+                            </div>
+                            <div class="flex justify-between items-center p-3 hover:bg-gray-50 rounded">
+                                <div>
+                                    <h3 class="font-medium">Rainy Day Reflections</h3>
+                                    <p class="text-sm text-gray-500">There's something about the rain that makes me introspective...</p>
+                                </div>
+                                <div class="text-sm text-gray-500">April 3</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- March Content -->
+                    <div class="file-content-pane" id="march-content">
+                        <div class="grid grid-cols-1 gap-4">
+                            <div class="flex justify-between items-center p-3 hover:bg-gray-50 rounded">
+                                <div>
+                                    <h3 class="font-medium">The Art of Overthinking</h3>
+                                    <p class="text-sm text-gray-500">If overthinking were an Olympic sport, I'd have gold medals...</p>
+                                </div>
+                                <div class="text-sm text-gray-500">March 27</div>
+                            </div>
+                            <div class="flex justify-between items-center p-3 hover:bg-gray-50 rounded">
+                                <div>
+                                    <h3 class="font-medium">Playlist: March Melancholy</h3>
+                                    <p class="text-sm text-gray-500">The songs that got me through this transitional month...</p>
+                                </div>
+                                <div class="text-sm text-gray-500">March 20</div>
+                            </div>
+                            <div class="flex justify-between items-center p-3 hover:bg-gray-50 rounded">
+                                <div>
+                                    <h3 class="font-medium">Friend Groups and Social Anxiety</h3>
+                                    <p class="text-sm text-gray-500">Navigating the complex world of teen friendships...</p>
+                                </div>
+                                <div class="text-sm text-gray-500">March 13</div>
+                            </div>
+                            <div class="flex justify-between items-center p-3 hover:bg-gray-50 rounded">
+                                <div>
+                                    <h3 class="font-medium">Late Night Creativity</h3>
+                                    <p class="text-sm text-gray-500">Why do all my best ideas come at 2AM?</p>
+                                </div>
+                                <div class="text-sm text-gray-500">March 6</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- February Content -->
+                    <div class="file-content-pane" id="february-content">
+                        <div class="grid grid-cols-1 gap-4">
+                            <div class="flex justify-between items-center p-3 hover:bg-gray-50 rounded">
+                                <div>
+                                    <h3 class="font-medium">Winter Blues</h3>
+                                    <p class="text-sm text-gray-500">Coping with seasonal depression and finding light...</p>
+                                </div>
+                                <div class="text-sm text-gray-500">February 27</div>
+                            </div>
+                            <div class="flex justify-between items-center p-3 hover:bg-gray-50 rounded">
+                                <div>
+                                    <h3 class="font-medium">The Books That Changed Me</h3>
+                                    <p class="text-sm text-gray-500">Literature that shaped my worldview as a teen...</p>
+                                </div>
+                                <div class="text-sm text-gray-500">February 20</div>
+                            </div>
+                            <div class="flex justify-between items-center p-3 hover:bg-gray-50 rounded">
+                                <div>
+                                    <h3 class="font-medium">Valentine's Day: Overrated?</h3>
+                                    <p class="text-sm text-gray-500">Thoughts on love and commercialization from a teen perspective...</p>
+                                </div>
+                                <div class="text-sm text-gray-500">February 13</div>
+                            </div>
+                            <div class="flex justify-between items-center p-3 hover:bg-gray-50 rounded">
+                                <div>
+                                    <h3 class="font-medium">New Month Resolutions</h3>
+                                    <p class="text-sm text-gray-500">Because January's resolutions never stick anyway...</p>
+                                </div>
+                                <div class="text-sm text-gray-500">February 6</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Dvar Torah Section - With light gray background -->
+        <section class="mb-16 relative">
+            <h2 class="mono text-2xl font-bold mb-8">Dvar Torah of the Week</h2>
+            <div class="torah-section">
+                <h3 class="text-xl font-semibold mb-4">Parshat Bereshit: Beginning with Purpose</h3>
+                <p class="text-gray-600 mb-4">
+                    In the beginning, G-d created the heavens and the earth. The Torah starts not with laws or commandments, but with creation itself—teaching us that everything has a purpose and design.
+                </p>
+                <p class="text-gray-600 mb-4">
+                    As teenagers, we often question our purpose and place in the world. The creation story reminds us that just as each element of creation had its specific role, we too were created with intention and meaning.
+                </p>
+                <p class="text-gray-600 mb-4">
+                    The Midrash teaches that G-d created and destroyed many worlds before settling on this one. Perhaps this is a metaphor for our own journey—we try, fail, and begin again until we find our true path.
+                </p>
+                <div class="text-sm text-gray-500 mt-6">
+                    <p>Source: Rabbi Jonathan Sacks, "Covenant & Conversation"</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Two Column Layout -->
+        <div class="flex flex-col lg:flex-row gap-8 mb-16">
+            <div class="w-full lg:w-2/3">
+                <!-- Quote of the Week -->
+                <section class="mb-12">
+                    <h2 class="mono text-2xl font-bold mb-6">Quote of the Week</h2>
+                    <div class="flex justify-end mb-4">
+                        <div class="text-message">
+                            <p class="mono text-lg">"Teenage years: too young to know, too old to ignore."</p>
+                            <p class="text-right text-xs text-gray-500 mt-2">Delivered • 3:42 AM</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Gym Tracker - Redesigned as calendar -->
+                <section class="mb-12 relative">
+                    <h2 class="mono text-2xl font-bold mb-6">Weekly Gym Tracker</h2>
+                    <div class="gym-tracker-container">
+                        <p class="text-gray-600 mb-4">Tracking my fitness journey this week...</p>
+                        
+                        <!-- Calendar-style gym tracker -->
+                        <div class="gym-tracker">
+                            <!-- Headers -->
+                            <div class="gym-day-header">
+                                <div>MON</div>
+                                <div class="gym-day-date">8</div>
+                            </div>
+                            <div class="gym-day-header">
+                                <div>TUE</div>
+                                <div class="gym-day-date">9</div>
+                            </div>
+                            <div class="gym-day-header">
+                                <div>WED</div>
+                                <div class="gym-day-date">10</div>
+                            </div>
+                            <div class="gym-day-header">
+                                <div>THU</div>
+                                <div class="gym-day-date">11</div>
+                            </div>
+                            <div class="gym-day-header">
+                                <div>FRI</div>
+                                <div class="gym-day-date">12</div>
+                            </div>
+                            <div class="gym-day-header">
+                                <div>SUN</div>
+                                <div class="gym-day-date">14</div>
+                            </div>
+                            
+                            <!-- Cells -->
+                            <div class="gym-day-cell gym-went"></div>
+                            <div class="gym-day-cell gym-went"></div>
+                            <div class="gym-day-cell"></div>
+                            <div class="gym-day-cell"></div>
+                            <div class="gym-day-cell gym-went"></div>
+                            <div class="gym-day-cell"></div>
+                        </div>
+                        
+                        <div class="flex flex-wrap gap-4 mt-6 text-sm">
+                            <div class="flex items-center"><span class="inline-block w-3 h-3 rounded-full bg-red-500 mr-2"></span> Went to Gym</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TeenFunds Card and Weekly Receipt -->
+                <section class="mb-12 relative">
+                    <!-- Decorative tape -->
+                    <div class="tape" style="--rotation: -8deg; --top: 50px; --left: 40px;"></div>
+                    
+                    <h2 class="mono text-2xl font-bold mb-6">My Spending</h2>
+                    <div class="credit-card">
+                        <div class="credit-card-inner">
+                            <div class="credit-card-front flex flex-col justify-between">
+                                <div class="flex justify-between">
+                                    <div class="mono text-sm">teenfunds</div>
+                                    <div class="mono text-sm">VISA</div>
+                                </div>
+                                <div class="chip"></div>
+                                <div class="mono text-base mb-2">1234 5678 9012 3456</div>
+                                <div class="flex justify-between items-end">
+                                    <div>
+                                        <div class="text-xs mb-1">CARD HOLDER</div>
+                                        <div class="mono text-sm">Diary of a Teen</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs mb-1">EXPIRES</div>
+                                        <div class="mono text-sm">05/28</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="credit-card-back flex flex-col justify-between">
+                                <div class="h-10 bg-black mt-4"></div>
+                                <div class="text-right pr-4">
+                                    <div class="text-xs mb-1">CVV</div>
+                                    <div class="mono bg-white text-black inline-block px-2 py-1 rounded text-sm">***</div>
+                                </div>
+                                <div class="text-xs text-center">
+                                    <p>For teen expenses only</p>
+                            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="mono text-xl font-bold mb-4 mt-8">Weekly Receipt</h3>
+                    <div class="receipt border border-gray-200 rounded-t-lg p-6">
+                        <div class="text-center mb-4">
+                            <h3 class="font-bold">WEEKLY RECEIPT</h3>
+                            <p class="text-sm text-gray-500">May 9 - May 15, 2023</p>
+                            <div class="border-b border-dashed my-2"></div>
+                        </div>
+                        <div class="receipt-item">
+                            <span>Coffee shop latte</span>
+                            <span>$4.50</span>
+                        </div>
+                        <div class="receipt-item">
+                            <span>Bookstore - novel</span>
+                            <span>$12.99</span>
+                        </div>
+                        <div class="receipt-item">
+                            <span>Movie ticket</span>
+                            <span>$9.75</span>
+                        </div>
+                        <div class="receipt-item">
+                            <span>Vintage t-shirt</span>
+                            <span>$15.00</span>
+                        </div>
+                        <div class="receipt-item">
+                            <span>Ramen lunch</span>
+                            <span>$8.50</span>
+                        </div>
+                        <div class="receipt-item">
+                            <span>Art supplies</span>
+                            <span>$22.45</span>
+                        </div>
+                        <div class="receipt-item">
+                            <span>Babysitting</span>
+                            <span>$35.00</span>
+                        </div>
+                        <div class="receipt-item">
+                            <span>Allowance</span>
+                            <span>$20.00</span>
+                        </div>
+                        <div class="border-b border-dashed my-2"></div>
+                        <div class="receipt-item font-bold">
+                            <span>TOTAL</span>
+                            <span>$73.19</span>
+                        </div>
+                        <div class="text-center mt-4 text-sm text-gray-500">
+                            <p>Thank you for shopping</p>
+                            <p>Please come again</p>
+                        </div>
+                        <div class="barcode mx-auto mt-4 w-3/4">
+                            <!-- Dynamic barcode with varying thicknesses -->
+                            <div class="barcode-line" style="width: 1px;"></div>
+                            <div class="barcode-line" style="width: 3px;"></div>
+                            <div class="barcode-line" style="width: 1px;"></div>
+                            <div class="barcode-line" style="width: 2px;"></div>
+                            <div class="barcode-line" style="width: 4px;"></div>
+                            <div class="barcode-line" style="width: 1px;"></div>
+                            <div class="barcode-line" style="width: 2px;"></div>
+                            <div class="barcode-line" style="width: 1px;"></div>
+                            <div class="barcode-line" style="width: 3px;"></div>
+                            <div class="barcode-line" style="width: 2px;"></div>
+                            <div class="barcode-line" style="width: 1px;"></div>
+                            <div class="barcode-line" style="width: 4px;"></div>
+                            <div class="barcode-line" style="width: 1px;"></div>
+                            <div class="barcode-line" style="width: 2px;"></div>
+                            <div class="barcode-line" style="width: 3px;"></div>
+                            <div class="barcode-line" style="width: 1px;"></div>
+                            <div class="barcode-line" style="width: 2px;"></div>
+                            <div class="barcode-line" style="width: 5px;"></div>
+                            <div class="barcode-line" style="width: 1px;"></div>
+                            <div class="barcode-line" style="width: 2px;"></div>
+                            <div class="barcode-line" style="width: 1px;"></div>
+                            <div class="barcode-line" style="width: 3px;"></div>
+                            <div class="barcode-line" style="width: 1px;"></div>
+                            <div class="barcode-line" style="width: 4px;"></div>
+                            <div class="barcode-line" style="width: 2px;"></div>
+                            <div class="barcode-line" style="width: 1px;"></div>
+                            <div class="barcode-line" style="width: 3px;"></div>
+                            <div class="barcode-line" style="width: 1px;"></div>
+                            <div class="barcode-line" style="width: 2px;"></div>
+                            <div class="barcode-line" style="width: 4px;"></div>
+                            <div class="barcode-line" style="width: 1px;"></div>
+                            <div class="barcode-line" style="width: 2px;"></div>
+                            <div class="barcode-line" style="width: 1px;"></div>
+                            <div class="barcode-line" style="width: 3px;"></div>
+                            <div class="barcode-line" style="width: 2px;"></div>
+                            <div class="barcode-line" style="width: 1px;"></div>
+                        </div>
+                        <div class="text-center text-xs mt-1">1234567890</div>
+                    </div>
+                </section>
+
+                <!-- Top Songs of the Week -->
+                <section class="mb-12 relative">
+                    <h2 class="mono text-2xl font-bold mb-6">Top Songs of the Week</h2>
+                    <div class="border border-gray-200 rounded-lg overflow-hidden bg-white">
+                        <div class="song-item">
+                            <div class="song-number">1</div>
+                            <div class="song-cover bg-purple-200">
+                                <div class="text-2xl">🎵</div>
+                            </div>
+                            <div class="song-info">
+                                <div class="song-title">Midnight Memories</div>
+                                <div class="song-artist">The Nostalgics</div>
+                            </div>
+                            <div class="text-gray-400">3:42</div>
+                        </div>
+                        <div class="song-item">
+                            <div class="song-number">2</div>
+                            <div class="song-cover bg-blue-200">
+                                <div class="text-2xl">🎵</div>
+                            </div>
+                            <div class="song-info">
+                                <div class="song-title">Daydream Believer</div>
+                                <div class="song-artist">Luna & The Stars</div>
+                            </div>
+                            <div class="text-gray-400">4:15</div>
+                        </div>
+                        <div class="song-item">
+                            <div class="song-number">3</div>
+                            <div class="song-cover bg-pink-200">
+                                <div class="text-2xl">🎵</div>
+                            </div>
+                            <div class="song-info">
+                                <div class="song-title">Teenage Wasteland</div>
+                                <div class="song-artist">The Misfits</div>
+                            </div>
+                            <div class="text-gray-400">3:28</div>
+                        </div>
+                        <div class="song-item">
+                            <div class="song-number">4</div>
+                            <div class="song-cover bg-green-200">
+                                <div class="text-2xl">🎵</div>
+                            </div>
+                            <div class="song-info">
+                                <div class="song-title">Overthinking at 2AM</div>
+                                <div class="song-artist">Night Owls</div>
+                            </div>
+                            <div class="text-gray-400">5:02</div>
+                        </div>
+                        <div class="song-item">
+                            <div class="song-number">5</div>
+                            <div class="song-cover bg-yellow-200">
+                                <div class="text-2xl">🎵</div>
+                            </div>
+                            <div class="song-info">
+                                <div class="song-title">Summer Nostalgia</div>
+                                <div class="song-artist">Sunset Drive</div>
+                            </div>
+                            <div class="text-gray-400">3:56</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="w-full lg:w-1/3">
+                <!-- News Board - With Newspaper Icon -->
+                <section class="mb-12 relative">
+                    <!-- Paper clip decoration -->
+                    <div class="paper-clip" style="right: 40px;"></div>
+                    
+                    <h2 class="mono text-2xl font-bold mb-6 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                        </svg>
+                        News Board
+                    </h2>
+                    <div class="news-board">
+                        <div class="news-item">
+                            <h3 class="font-medium text-base">New Art Exhibition Opens Downtown</h3>
+                            <p class="text-sm text-gray-500 mt-1">Local teen artists featured in the annual showcase at City Gallery.</p>
+                        </div>
+                        <div class="news-item">
+                            <h3 class="font-medium text-base">School Board Approves Extended Lunch Period</h3>
+                            <p class="text-sm text-gray-500 mt-1">Starting next semester, lunch breaks will be 45 minutes instead of 30.</p>
+                        </div>
+                        <div class="news-item">
+                            <h3 class="font-medium text-base">Local Band "The Misfits" Releases New Album</h3>
+                            <p class="text-sm text-gray-500 mt-1">Available on all streaming platforms, featuring their hit single "Teenage Wasteland".</p>
+                        </div>
+                        <div class="news-item">
+                            <h3 class="font-medium text-base">Community Center Hosts Poetry Slam</h3>
+                            <p class="text-sm text-gray-500 mt-1">This Friday at 7PM, open to all ages with special teen category.</p>
+                        </div>
+                        <div class="news-item">
+                            <h3 class="font-medium text-base">New Coffee Shop Opens Near Campus</h3>
+                            <p class="text-sm text-gray-500 mt-1">Student discount available with valid ID, featuring study spaces and free WiFi.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Random Thoughts - More Profound -->
+               
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-50 py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="mono text-lg mb-2">diary of a <span class="highlight-yellow">teen</span></div>
+                    <p class="text-gray-600 text-sm">Documenting the chaos and clarity of teenage life.</p>
+                </div>
+                <div class="flex flex-col items-center md:items-end space-y-4">
+                    <a href="https://instagram.com/diaryofateen" class="social-icon" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a href="#" class="buy-coffee-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 8H19C20.0609 8 21.0783 8.42143 21.8284 9.17157C22.5786 9.92172 23 10.9391 23 12C23 13.0609 22.5786 14.0783 21.8284 14.8284C21.0783 15.5786 20.0609 16 19 16H18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 8H18V17C18 18.0609 17.5786 19.0783 16.8284 19.8284C16.0783 20.5786 15.0609 21 14 21H6C4.93913 21 3.92172 20.5786 3.17157 19.8284C2.42143 19.0783 2 18.0609 2 17V8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M6 1V4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M10 1V4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M14 1V4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        Buy me a coffee
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dark Mode Toggle - Improved
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const mobileDarkModeToggle = document.getElementById('mobileDarkModeToggle');
+        const body = document.body;
+        
+        function toggleDarkMode() {
+            body.classList.toggle('dark-mode');
+            
+            const isDarkMode = body.classList.contains('dark-mode');
+            
+            // Update toggle appearance
+            darkModeToggle.classList.toggle('toggle-active', isDarkMode);
+            mobileDarkModeToggle.classList.toggle('toggle-active', isDarkMode);
+            
+            // Update toggle icons
+            const toggleCircles = document.querySelectorAll('.toggle-circle');
+            toggleCircles.forEach(circle => {
+                circle.innerHTML = isDarkMode ? '🌙' : '☀️';
+            });
+            
+            // Store preference
+            localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
+        }
+        
+        // Event listeners
+        darkModeToggle.addEventListener('click', toggleDarkMode);
+        mobileDarkModeToggle.addEventListener('click', toggleDarkMode);
+        
+        // Check for saved preference
+        document.addEventListener('DOMContentLoaded', () => {
+            const darkModePreference = localStorage.getItem('darkMode');
+            
+            // Check system preference if no saved preference
+            if (darkModePreference === null) {
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    body.classList.add('dark-mode');
+                    darkModeToggle.classList.add('toggle-active');
+                    mobileDarkModeToggle.classList.add('toggle-active');
+                    document.querySelectorAll('.toggle-circle').forEach(circle => {
+                        circle.innerHTML = '🌙';
+                    });
+                }
+            } else if (darkModePreference === 'enabled') {
+                body.classList.add('dark-mode');
+                darkModeToggle.classList.add('toggle-active');
+                mobileDarkModeToggle.classList.add('toggle-active');
+                document.querySelectorAll('.toggle-circle').forEach(circle => {
+                    circle.innerHTML = '🌙';
+                });
+            }
+        });
+        
+        // File tabs functionality
+        const fileTabs = document.querySelectorAll('.file-tab');
+        const fileContentPanes = document.querySelectorAll('.file-content-pane');
+        
+        fileTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                fileTabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Hide all content panes
+                fileContentPanes.forEach(pane => pane.classList.remove('active'));
+                
+                // Show the corresponding content pane
+                const tabName = tab.getAttribute('data-tab');
+                document.getElementById(`${tabName}-content`).classList.add('active');
+            });
+        });
+        
+        // Quote messages
+        const quotes = [
+            "Teenage years: too young to know, too old to ignore.",
+            "Finding yourself is a journey, not a destination.",
+            "Sometimes I feel infinite, sometimes I feel invisible.",
+            "Growing up is realizing it's okay not to have it all figured out."
+        ];
+        
+        const quoteElement = document.querySelector('.text-message p:first-child');
+        let currentQuoteIndex = 0;
+        
+        function changeQuote() {
+            quoteElement.textContent = quotes[currentQuoteIndex];
+            currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+        }
+        
+        // Change quote every 10 seconds
+        setInterval(changeQuote, 10000);
+        
+        // Hamburger Menu
+        const hamburger = document.getElementById('hamburgerMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            mobileMenuOverlay.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+        
+        mobileMenuOverlay.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    </script>
+</body>
+</html>
